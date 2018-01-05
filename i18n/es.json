@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"twitterwidget-desc": "Visualiza un widget de Twitter en la página",
+	"twitterwidget-error-no-widget-id": "Falta especificar el atributo \"widget-id\".",
+	"twitterwidget-error-format-widget-id": "El atributo \"widget-id\" contiene carácteres no válidos."
+}

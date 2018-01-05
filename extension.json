@@ -1,0 +1,39 @@
+{
+	"name": "TwitterWidget",
+	"version": "1.0.0",
+	"author": [
+		"Jesús Martínez (Ciencia Al Poder)"
+	],
+	"url": "https://github.com/ciencia/mediawiki-extensions-TwitterWidget",
+	"descriptionmsg": "twitterwidget-desc",
+	"license-name": "MIT",
+	"type": "parserhook",
+	"MessagesDirs": {
+		"TwitterWidget": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"TwitterWidgetHooks": "TwitterWidget.hooks.php",
+		"TwitterWidget": "TwitterWidget.classes.php"
+	},
+	"ResourceModules": {
+		"ext.twitterwidget": {
+			"scripts": "ext.twitterwidget.js",
+			"targets": [
+				"mobile",
+				"desktop"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "TwitterWidget/resources"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": [
+			"TwitterWidgetHooks::onParserFirstCallInit"
+		]
+	},
+	"manifest_version": 1
+}
