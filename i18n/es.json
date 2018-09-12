@@ -3,6 +3,6 @@
 		"authors": []
 	},
 	"twitterwidget-desc": "Visualiza un widget de Twitter en la página",
-	"twitterwidget-error-no-widget-id": "Falta especificar el atributo \"widget-id\".",
-	"twitterwidget-error-format-widget-id": "El atributo \"widget-id\" contiene carácteres no válidos."
+	"twitterwidget-error-no-account": "Falta especificar el atributo \"account\".",
+	"twitterwidget-error-format-account": "El atributo \"account\" contiene carácteres no válidos."
 }

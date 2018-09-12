@@ -9,13 +9,14 @@
 // TwitterWidget class
 class TwitterWidget {
 
-	const REGEX_WIDGET_ID = '/^\d+$/';
 	const REGEX_TWITTER_ACCOUNT_NAME = '/^@?[a-zA-Z0-9_]{1,15}$/';
 
 	/* Fields */
 
 	private $mParser;
 	private $mAnchorAttributes = [];
+
+	private $mAllowedTags = [ 'lang', 'show-replies', 'chrome', 'theme', 'width', 'height', 'tweet-limit', 'link-color', 'border-color', 'aria-polite', 'dnt' ];
 
 	/* Functions */
 
@@ -47,26 +48,28 @@ class TwitterWidget {
 	 * @returns string|null HTML errors, or null if there are no invalid parameters
 	 */
 	private function extractOptions( array $args ) {
-		if ( !isset( $args[ 'widget-id' ] ) || !$args[ 'widget-id' ] ) {
+		if ( !isset( $args[ 'account' ] ) ) {
 			return Xml::tags( 'div', null,
 				Xml::element( 'strong',
 					[ 'class' => 'error' ],
-					wfMessage( 'twitterwidget-error-no-widget-id' )->text()
+					wfMessage( 'twitterwidget-error-no-account' )->text()
 				)
 			);
 		}
-		if ( !preg_match( self::REGEX_WIDGET_ID, $args[ 'widget-id' ] ) ) {
+		if ( !preg_match( self::REGEX_TWITTER_ACCOUNT_NAME, $args[ 'account' ] ) ) {
 			return Xml::tags( 'div', null,
 				Xml::element( 'strong',
 					[ 'class' => 'error' ],
-					wfMessage( 'twitterwidget-error-format-widget-id' )->text()
+					wfMessage( 'twitterwidget-error-format-account' )->text()
 				)
 			);
 		}
-		$this->mAnchorAttributes['data-widget-id'] = $args[ 'widget-id' ];
-		if ( isset( $args[ 'account' ] ) && preg_match( self::REGEX_TWITTER_ACCOUNT_NAME, $args[ 'account' ] ) ) {
-			$this->mAnchorAttributes['href'] = sprintf( 'https://twitter.com/%s',
-				substr( $args[ 'account' ], 0, 1 ) == '@' ? substr( $args[ 'account' ], 1 ) : $args[ 'account' ] );
+		$account = substr( $args[ 'account' ], 0, 1 ) == '@' ? substr( $args[ 'account' ], 1 ) : $args[ 'account' ];
+		$this->mAnchorAttributes['href'] = "https://twitter.com/${account}?ref_src=twsrc%5Etfw";
+		foreach ( $args as $paramName => $paramValue ) {
+			if ( in_array( $paramName, $this->mAllowedTags ) ) {
+				$this->mAnchorAttributes["data-$paramName"] = $paramValue;
+			}
 		}
 	}
 }

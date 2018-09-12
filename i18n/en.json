@@ -3,6 +3,6 @@
 		"authors": []
 	},
 	"twitterwidget-desc": "Renders a Twitter widget on the page",
-	"twitterwidget-error-no-widget-id": "Missing \"widget-id\" attribute.",
-	"twitterwidget-error-format-widget-id": "The \"widget-id\" attribute contains invalid characters."
+	"twitterwidget-error-no-account": "Missing \"account\" attribute.",
+	"twitterwidget-error-format-account": "The \"account\" attribute contains invalid characters."
 }

@@ -1,5 +1,5 @@
 # mediawiki-extensions-TwitterWidget
-Adds a tag to embed a Twitter widget
+Adds a tag to embed a Twitter timeline widget
 
 To install, add this to LocalSettings.php:
 
@@ -10,10 +10,13 @@ wfLoadExtension( 'TwitterWidget' );
 You can use this to place a Twitter widget on a page:
 
 ```lang=xml
-<twitter widget-id="319888252335169536" />
+<twitter account="TwitterDev" />
 ```
 
-The widget ID is created in the Twitter web page.
+The `account` parameter is mandatory, which should be the Twitter account name you want to display.
 
-You can add an `account` parameter, so the initial link points to your account
-on Twitter, in case the JavaScript fails to load.
+Other recognized parameters:
+
+lang, show-replies, chrome, theme, width, height, tweet-limit, link-color, border-color, aria-polite, dnt
+
+More information: https://developer.twitter.com/en/docs/twitter-for-websites/timelines/guides/parameter-reference
