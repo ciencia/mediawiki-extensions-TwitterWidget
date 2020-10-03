@@ -1,0 +1,61 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! hooks
+twitter
+!! endhooks
+
+!! test
+TwitterWidget empty
+!! wikitext
+<twitter />
+!! html+tidy
+<div><strong class="error">Missing "account" attribute.</strong></div>
+!! end
+
+!! test
+TwitterWidget account badformat
+!! wikitext
+<twitter account="!" />
+!! html+tidy
+<div><strong class="error">The "account" attribute contains invalid characters.</strong></div>
+!! end
+
+!! test
+TwitterWidget account with @
+!! wikitext
+<twitter account="@TwitterDev" />
+!! html+tidy
+<div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Twitter</a></div>
+!! end
+
+!! test
+TwitterWidget account without @
+!! wikitext
+<twitter account="TwitterDev" />
+!! html+tidy
+<div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Twitter</a></div>
+!! end
+
+!! test
+TwitterWidget unrecognized attribute
+!! wikitext
+<twitter account="TwitterDev" onload="a" />
+!! html+tidy
+<div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Twitter</a></div>
+!! end
+
+!! test
+TwitterWidget lang
+!! wikitext
+<twitter account="TwitterDev" lang="es" />
+!! html+tidy
+<div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw" data-lang="es">Twitter</a></div>
+!! end
+
+!! test
+TwitterWidget injection
+!! wikitext
+<twitter account="TwitterDev" lang="<" />
+!! html+tidy
+<div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw" data-lang="&lt;">Twitter</a></div>
+!! end
