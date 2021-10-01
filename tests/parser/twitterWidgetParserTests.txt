@@ -8,7 +8,7 @@ twitter
 TwitterWidget empty
 !! wikitext
 <twitter />
-!! html+tidy
+!! html
 <div><strong class="error">Missing "account" attribute.</strong></div>
 !! end
 
@@ -16,7 +16,7 @@ TwitterWidget empty
 TwitterWidget account badformat
 !! wikitext
 <twitter account="!" />
-!! html+tidy
+!! html
 <div><strong class="error">The "account" attribute contains invalid characters.</strong></div>
 !! end
 
@@ -24,7 +24,7 @@ TwitterWidget account badformat
 TwitterWidget account with @
 !! wikitext
 <twitter account="@TwitterDev" />
-!! html+tidy
+!! html
 <div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Twitter</a></div>
 !! end
 
@@ -32,7 +32,7 @@ TwitterWidget account with @
 TwitterWidget account without @
 !! wikitext
 <twitter account="TwitterDev" />
-!! html+tidy
+!! html
 <div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Twitter</a></div>
 !! end
 
@@ -40,7 +40,7 @@ TwitterWidget account without @
 TwitterWidget unrecognized attribute
 !! wikitext
 <twitter account="TwitterDev" onload="a" />
-!! html+tidy
+!! html
 <div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Twitter</a></div>
 !! end
 
@@ -48,7 +48,7 @@ TwitterWidget unrecognized attribute
 TwitterWidget lang
 !! wikitext
 <twitter account="TwitterDev" lang="es" />
-!! html+tidy
+!! html
 <div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw" data-lang="es">Twitter</a></div>
 !! end
 
@@ -56,6 +56,6 @@ TwitterWidget lang
 TwitterWidget injection
 !! wikitext
 <twitter account="TwitterDev" lang="<" />
-!! html+tidy
+!! html
 <div class="widget-twitter"><a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw" data-lang="&lt;">Twitter</a></div>
 !! end
