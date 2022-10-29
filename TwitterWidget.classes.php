@@ -29,7 +29,7 @@ class TwitterWidget {
 		if ( $errors ) {
 			return $errors;
 		}
-		$this->mParser->getOutput()->addModules( 'ext.twitterwidget' );
+		$this->mParser->getOutput()->addModules( [ 'ext.twitterwidget' ] );
 		$htmlOut = Xml::openElement( 'div', [
 			'class' => 'widget-twitter'
 		] );
